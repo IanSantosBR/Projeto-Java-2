@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class Menu {
 
-	private static Scanner leOpção;
+	private static Scanner lêOpção;
 
 	public static void main(String[] args) {
 		
 		int opção = 236541789; //Não pode ser 0, printava outras partes do main ao chamar excessões; 
-		leOpção = new Scanner(System.in);
+		lêOpção = new Scanner(System.in);
 		
 		System.out.println("\t ----------------"   );
 		System.out.println("\t LOJA DE VEÍCULOS"   );
@@ -24,7 +24,7 @@ public class Menu {
 				           "---------------------    ");
 		System.out.print("Escolha uma opção: ");
 		try {
-			opção = leOpção.nextInt();
+			opção = lêOpção.nextInt();
 		} catch (InputMismatchException e) {
 			System.err.println("Somente números são permitidos nesse campo. \n");
 			try {
