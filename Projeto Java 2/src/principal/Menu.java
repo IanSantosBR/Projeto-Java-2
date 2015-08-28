@@ -3,6 +3,8 @@ package principal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import estoque.Loja;
+
 public class Menu {
 
 	private static Scanner lêOpção;
@@ -37,7 +39,12 @@ public class Menu {
 		
 		switch (opção) {
 		case 1:
-			System.out.println("1");
+			System.out.println();
+			System.out.println("\t ---------------------------- ");
+			System.out.println("\t LOJA DE VEÍCULOS - ADICIONAR ");
+			System.out.println("\t ---------------------------- ");
+			System.out.println();
+			Loja.adicionar();
 			break;
 			
 		case 2: 
@@ -80,3 +87,4 @@ public class Menu {
 		}
 	}
 }	
+	
