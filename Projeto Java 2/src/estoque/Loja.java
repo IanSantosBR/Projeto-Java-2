@@ -27,27 +27,32 @@ public class Loja {
 		  }
 	}
 
-	public static void remover(String chassi) {
+	public static boolean remover(String chassi) {
 		boolean apagou = false;
 
 		try {
-			for (Veículo ve: estoque){
-				if (ve.getChassi().equals(chassi)){
-					estoque.remove(ve);
-					apagou = true;
-					System.out.println();
-					System.out.println("Veículo removido com sucesso. \n");
-					Thread.sleep(1500);
+					
+				for (Veículo ve: estoque){
+					if (ve.getChassi().equals(chassi)){
+						estoque.remove(ve);
+						apagou = true;
+						System.out.println();
+						System.out.println("Veículo removido com sucesso. \n");
+						Thread.sleep(1500);
+						return apagou;
+					}
 				}
-			}
-			if (!apagou){
-				System.out.println("Não existe veículo cadastrado com esse chassi. \n");
-			}
+				if (!apagou){
+					System.err.println("Não existe veículo cadastrado com esse chassi. \n");
+					return apagou;
+				}
+			
 		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		} catch (ConcurrentModificationException ex) {
 			Menu.main(null);
 		  }
+		return apagou;
 	}
 	
 	public static void listar() {

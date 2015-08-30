@@ -1,11 +1,13 @@
 package estoque;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import índices.*;
 
 public class Veículo {
+	
 	private String chassi;
 	private float preço;
 	private int cilindrada; 
@@ -35,14 +37,26 @@ public class Veículo {
 
 	private TipoVeículo defineTipoVeículo() {
 		TipoVeículo veículo = null;
-		System.out.println("1 - Carro  			       \n" + 
-		       	           "2 - Moto   			       \n" +
-		                   "-----------------------------");
-		System.out.print("Escolha o tipo do veículo: ");
-		opção = lêOpção.nextInt();
-		for (TipoVeículo tv: TipoVeículo.values()){
-			if (tv.getOpção() == (opção - 1)){
-				veículo = tv;
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println("1 - Carro  			       \n" + 
+			       	           "2 - Moto   			       \n" +
+			                   "-----------------------------");
+			System.out.print("Escolha o tipo do veículo: ");
+			
+			try {
+				opção = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineTipoVeículo();//faz uma nova chada para o mesmo metodo da classe
+			}
+			for (TipoVeículo tv: TipoVeículo.values()){
+				if (tv.getOpção() == (opção - 1)){
+					veículo = tv;
+					confirmacao=true;//Se a opcao foi encontrada entao libera para a proxima opcao
+				}
 			}
 		}
 		return veículo;
@@ -50,18 +64,29 @@ public class Veículo {
 	
 	private Fabricante defineFabricante() {
 		Fabricante fabricante = null;
-		System.out.println();
-		System.out.println("1 - Volkswagen             \n" + 
-    	           		   "2 - Honda    			   \n" +
-    	           		   "3 - Ford    			   \n" +
-    	           		   "4 - Toyota    			   \n" +
-    	           		   "5 - Hyundai    			   \n" +
-		                   "-----------------------------");
-		System.out.print("Escolha o fabricante: ");
-		opção = lêOpção.nextInt();
-		for (Fabricante fa: Fabricante.values()){
-			if (fa.getOpção() == (opção - 1)){
-				fabricante = fa;
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.println("1 - Volkswagen             \n" + 
+	    	           		   "2 - Honda    			   \n" +
+	    	           		   "3 - Ford    			   \n" +
+	    	           		   "4 - Toyota    			   \n" +
+	    	           		   "5 - Hyundai    			   \n" +
+			                   "-----------------------------");
+			System.out.print("Escolha o fabricante: ");
+			try {
+				opção = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineFabricante();//faz uma nova chada para a mesma classe
+			}
+			for (Fabricante fa: Fabricante.values()){
+				if (fa.getOpção() == (opção - 1)){
+					fabricante = fa;
+					confirmacao=true;
+				}
 			}
 		}
 		return fabricante;
@@ -69,18 +94,29 @@ public class Veículo {
 	
 	private Modelo defineModelo() {
 		Modelo modelo = null;
-		System.out.println();
-		System.out.println("1 - Golf                   \n" + 
-    	           		   "2 - HR-V    			   \n" +
-    	           		   "3 - Focus    			   \n" +
-    	           		   "4 - Corolla    			   \n" +
-    	           		   "5 - HB20    			   \n" +
-		                   "-----------------------------");
-		System.out.print("Escolha o modelo: ");
-		opção = lêOpção.nextInt();
-		for (Modelo mo: Modelo.values()){
-			if(mo.getOpção() == (opção - 1)){
-				modelo = mo;
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.println("1 - Golf                   \n" + 
+	    	           		   "2 - HR-V    			   \n" +
+	    	           		   "3 - Focus    			   \n" +
+	    	           		   "4 - Corolla    			   \n" +
+	    	           		   "5 - HB20    			   \n" +
+			                   "-----------------------------");
+			System.out.print("Escolha o modelo: ");
+			try {
+				opção = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineModelo();//faz uma nova chada para o mesmo metodo da classe
+			}
+			for (Modelo mo: Modelo.values()){
+				if(mo.getOpção() == (opção - 1)){
+					modelo = mo;
+					confirmacao=true;
+				}
 			}
 		}
 		return modelo;
@@ -88,18 +124,29 @@ public class Veículo {
 	
 	private Estilo defineEstilo() {
 		Estilo estilo = null;
-		System.out.println();
-		System.out.println("1 - Perua  		   		   \n" + 
-        		   		   "2 - Esportivo    		   \n" +
-        		   		   "3 - Sedã                   \n" +
-        		   		   "4 - Hatchback   		   \n" +
-        		   		   "5 - Trail                  \n" +
-	                       "-----------------------------");
-		System.out.print("Escolha o estilo: ");
-		opção = lêOpção.nextInt();
-		for (Estilo es: Estilo.values()){
-			if (es.getOpção() == (opção - 1)){
-				estilo = es;
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.println("1 - Perua  		   		   \n" + 
+	        		   		   "2 - Esportivo    		   \n" +
+	        		   		   "3 - Sedã                   \n" +
+	        		   		   "4 - Hatchback   		   \n" +
+	        		   		   "5 - Trail                  \n" +
+		                       "-----------------------------");
+			System.out.print("Escolha o estilo: ");
+			try {
+				opção = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineEstilo();//faz uma nova chada para o mesmo metodo da classe
+			}
+			for (Estilo es: Estilo.values()){
+				if (es.getOpção() == (opção - 1)){
+					estilo = es;
+					confirmacao=true;
+				}
 			}
 		}
 		return estilo;
@@ -107,34 +154,64 @@ public class Veículo {
 	
 	private Cor defineCor() {
 		Cor cor = null;
-		System.out.println();
-		System.out.println("1 - Preto  		   		   \n" + 
-    	           		   "2 - Branco    			   \n" +
-    	           		   "3 - Cinza    			   \n" +
-    	           		   "4 - Vermelho               \n" +
-    	           		   "5 - Amarelo    			   \n" +
-                           "-----------------------------");
-		System.out.print("Escolha a cor: ");
-		opção = lêOpção.nextInt();
-		for (Cor co: Cor.values()){
-			if (co.getOpção() == (opção - 1)){
-				cor = co;
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.println("1 - Preto  		   		   \n" + 
+	    	           		   "2 - Branco    			   \n" +
+	    	           		   "3 - Cinza    			   \n" +
+	    	           		   "4 - Vermelho               \n" +
+	    	           		   "5 - Amarelo    			   \n" +
+	                           "-----------------------------");
+			System.out.print("Escolha a cor: ");
+			try {
+				opção = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineCor();//faz uma nova chada para o mesmo metodo da classe
+			}
+			for (Cor co: Cor.values()){
+				if (co.getOpção() == (opção - 1)){
+					cor = co;
+					confirmacao=true;
+				}
 			}
 		}
 		return cor;
 	}
 	
 	private String defineChassi() {
-		System.out.println();
-		System.out.print("Digite o número do chassi: ");
-		chassi = lêOpção.next();
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.print("Digite o número do chassi: ");
+			chassi = lêOpção.next();
+			confirmacao=true;
+		}
 		return chassi;
 	}
 	
 	private float definePreço() {
-		System.out.println();
-		System.out.print("Digite o preço: ");
-		preço = lêOpção.nextInt();
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.print("Digite o preço: ");
+			try {
+				preço = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.definePreço();//faz uma nova chada para o mesmo metodo da classe
+			}
+			if(preço>0) confirmacao=true;
+			else {
+				System.out.println();
+				System.out.print("Digite o preço: ");
+			}
+		}
 		return preço;
 	}
 	
@@ -150,7 +227,15 @@ public class Veículo {
                            "7 - 2.0                    \n" +
                            "-----------------------------");
     	System.out.print("Escolha a motorização: ");
-		opção = lêOpção.nextInt();
+		
+		try {
+			opção = lêOpção.nextInt();
+		} catch (InputMismatchException e) {
+			System.out.println("Somente números são permitidos neste campo. \n");
+			lêOpção.nextLine();//Limpa a entrada
+			
+			this.defineMotorização();//faz uma nova chada para o mesmo metodo da classe
+		}
 			for (Motorização mo: Motorização.values()){
 				if (mo.getOpção() == (opção - 1)){
 					motorização = mo;
@@ -160,33 +245,75 @@ public class Veículo {
 	}
 	
 	private Câmbio defineCâmbio() {
-		Câmbio câmbio = null;
-		System.out.println();
-		System.out.println("1 - Automático        \n" + 
-                           "2 - Semi-Automático   \n" +
-                           "3 - Manual            \n" +
-						   "--------------------------");
-		System.out.print("Escolha o câmbio: ");
-		opção = lêOpção.nextInt();
-		for (Câmbio câ: Câmbio.values()){
-			if (câ.getOpção() == (opção - 1)){
-				câmbio = câ;
+		
+			Câmbio câmbio = null;
+			boolean confirmacao=false;
+			while(!confirmacao){
+			System.out.println();
+			System.out.println("1 - Automático        \n" + 
+	                           "2 - Semi-Automático   \n" +
+	                           "3 - Manual            \n" +
+							   "--------------------------");
+			System.out.print("Escolha o câmbio: ");
+			opção = lêOpção.nextInt();
+			try {
+				opção = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineCâmbio();//faz uma nova chada para o mesmo metodo da classe
+			}
+			for (Câmbio câ: Câmbio.values()){
+				if (câ.getOpção() == (opção - 1)){
+					câmbio = câ;
+					confirmacao=true;
+				}
 			}
 		}
 		return câmbio;
 	}
 	
 	private int defineCilindrada() {
-		System.out.println();
-		System.out.print("Digite a cilindrada: ");
-		cilindrada = lêOpção.nextInt();
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.print("Digite a cilindrada: ");
+			
+			try {
+				cilindrada = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineCilindrada();//faz uma nova chada para o mesmo metodo da classe
+			}
+			if(cilindrada>0) confirmacao=true;
+			
+		}
 		return cilindrada;
+		
 	}
 	
 	private int defineCapacidadeDoTanque() {
-		System.out.println();
-		System.out.print("Digite a capacidade do tanque: ");
-		capacidadeDoTanque = lêOpção.nextInt();
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.print("Digite a capacidade do tanque: ");
+			try {
+				capacidadeDoTanque = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				this.defineCapacidadeDoTanque();//faz uma nova chada para o mesmo metodo da classe
+			}
+			if(capacidadeDoTanque<0) {
+				confirmacao=false;
+				System.err.println("A capacidade do tanque precisa ser maior que zero. \n");
+			}
+			else confirmacao=true;
+		}
 		return capacidadeDoTanque;
 	}
 	

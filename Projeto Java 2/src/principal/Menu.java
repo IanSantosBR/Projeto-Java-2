@@ -8,12 +8,12 @@ import estoque.Loja;
 //import estoque.Veículo;
 
 public class Menu {
-
+	
 	private static Scanner lêOpção;
 	static String chassi = null;
 
 	public static void main(String[] args) {
-		
+		boolean confirmacao=false;//Confirmar se o que foi digitado condiz com as opções
 		int opção = 236541789; 
 		lêOpção = new Scanner(System.in);
 		
@@ -51,13 +51,21 @@ public class Menu {
 			break;
 			
 		case 2: 
-			System.out.println();
-			System.out.println("\t ---------------------------- ");
-			System.out.println("\t LOJA DE VEÍCULOS - REMOVER ");
-			System.out.println("\t ---------------------------- \n");
-			System.out.print("Digite o chassi para remover: ");
-			chassi = lêOpção.next();
-			Loja.remover(chassi);
+			
+			while(!confirmacao){
+				System.out.println();
+				System.out.println("\t ---------------------------- ");
+				System.out.println("\t LOJA DE VEÍCULOS - REMOVER ");
+				System.out.println("\t ---------------------------- \n");
+				System.out.print("Digite o chassi para remover ou 0 para sair: ");
+				chassi = lêOpção.next();
+				if(chassi==null){
+					System.err.println("Chassi não pode ser nulo");
+				}
+				else if(chassi.equals("0")) confirmacao=true;
+				else confirmacao=Loja.remover(chassi);
+				
+			}
 			main(args);
 			break;
 			
@@ -123,7 +131,7 @@ public class Menu {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				Thread.currentThread().interrupt();
-			  } 
+			  }
 			main(args);
 		}
 	}
