@@ -11,10 +11,17 @@ public class Menu {
 	
 	private static Scanner lêOpção;
 	static String chassi = null;
+	public static boolean primeiroCarregamento=true;
 
 	public static void main(String[] args) {
 		boolean confirmacao=false;//Confirmar se o que foi digitado condiz com as opções
 		int opção = 236541789; 
+		
+		// Carregando Arquivos
+		/*if(primeiroCarregamento){
+			Loja carregarLoja=new Loja();
+			primeiroCarregamento=false;
+		}*/
 		lêOpção = new Scanner(System.in);
 		
 		System.out.println("\t ----------------"   );

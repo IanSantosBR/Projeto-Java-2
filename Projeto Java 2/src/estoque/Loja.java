@@ -1,14 +1,28 @@
 package estoque;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
+import IO.InputLoad;
+import IO.OutputSave;
 import principal.Menu;
 
 public class Loja {
 	private String nome;
 	private String endereço;
 	private static ArrayList <Veículo> estoque = new ArrayList <Veículo>();
+	public Loja(){
+		Veículo veiculoCarregado=new Veículo(0);
+		InputLoad loadSavedFiles=new InputLoad();
+		try {
+			veiculoCarregado=loadSavedFiles.LoadStoque();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		estoque.add(veiculoCarregado);
+	}
 	
 	public Loja(String nome, String endereço) {
 		nome = "Loja de Veículos";
@@ -16,8 +30,14 @@ public class Loja {
 	}
 	
 	public static void adicionar() {
-		Veículo veículo = new Veículo();
+		Veículo veículo=NovoVeículo.NovosVeículo();
 		estoque.add(veículo);
+		try {
+			OutputSave.SaveToFIle(estoque);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println();
 		System.out.println("Veículo cadastrado com sucesso. \n");
 		try {
