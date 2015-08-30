@@ -4,13 +4,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import índices.Cor;
-import índices.Câmbio;
-import índices.Estilo;
-import índices.Fabricante;
-import índices.Modelo;
-import índices.Motorização;
-import índices.TipoVeículo;
+import índices.*;
 
 public class NovoVeículo {
 	private static String chassi;
@@ -227,30 +221,34 @@ public class NovoVeículo {
 	
 	private static Motorização defineMotorização() {
 		Motorização motorização = null;
-		System.out.println();
-		System.out.println("1 - 1.0                    \n" + 
-                           "2 - 1.3                    \n" +
-                           "3 - 1.4                    \n" +
-                           "4 - 1.5                    \n" +
-                           "5 - 1.6                    \n" +
-                           "6 - 1.8                    \n" +
-                           "7 - 2.0                    \n" +
-                           "-----------------------------");
-    	System.out.print("Escolha a motorização: ");
-		
-		try {
-			opção = lêOpção.nextInt();
-		} catch (InputMismatchException e) {
-			System.out.println("Somente números são permitidos neste campo. \n");
-			lêOpção.nextLine();//Limpa a entrada
+		boolean confirmacao=false;
+		while(!confirmacao){
+			System.out.println();
+			System.out.println("1 - 1.0                    \n" + 
+	                           "2 - 1.3                    \n" +
+	                           "3 - 1.4                    \n" +
+	                           "4 - 1.5                    \n" +
+	                           "5 - 1.6                    \n" +
+	                           "6 - 1.8                    \n" +
+	                           "7 - 2.0                    \n" +
+	                           "-----------------------------");
+	    	System.out.print("Escolha a motorização: ");
 			
-			defineMotorização();//faz uma nova chada para o mesmo metodo da classe
-		}
-			for (Motorização mo: Motorização.values()){
-				if (mo.getOpção() == (opção - 1)){
-					motorização = mo;
-				}
+			try {
+				opção = lêOpção.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Somente números são permitidos neste campo. \n");
+				lêOpção.nextLine();//Limpa a entrada
+				
+				defineMotorização();//faz uma nova chada para o mesmo metodo da classe
 			}
+				for (Motorização mo: Motorização.values()){
+					if (mo.getOpção() == (opção - 1)){
+						motorização = mo;
+						confirmacao=true;
+					}
+				}
+		}
 		return motorização;
 	}
 	
@@ -265,7 +263,7 @@ public class NovoVeículo {
 	                           "3 - Manual            \n" +
 							   "--------------------------");
 			System.out.print("Escolha o câmbio: ");
-			opção = lêOpção.nextInt();
+			
 			try {
 				opção = lêOpção.nextInt();
 			} catch (InputMismatchException e) {
