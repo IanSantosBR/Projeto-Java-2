@@ -19,12 +19,17 @@ public class OutputSave {
 		for(Veículo ItemEstoque: estoque){
 			pw.println(ItemEstoque.getChassi());
 			pw.println(ItemEstoque.getPreço());
-			pw.println(ItemEstoque.getCapacidadeDoTanque());
 			pw.println(ItemEstoque.getFabricante());
 			pw.println(ItemEstoque.getModelo());
 			pw.println(ItemEstoque.getEstilo());
-			pw.println(ItemEstoque.getMotorização());
-			pw.println(ItemEstoque.getCâmbio());
+			if(ItemEstoque.getTipoVeiculo().equals("Carro")){
+				pw.println(ItemEstoque.getMotorização());
+				pw.println(ItemEstoque.getCâmbio());
+			}
+			else{
+				pw.println(ItemEstoque.getCilindrada());
+				pw.println(ItemEstoque.getCapacidadeDoTanque());
+			}
 			pw.println(ItemEstoque.getCor());
 			pw.println(ItemEstoque.getTipoVeiculo());
 			pw.println();

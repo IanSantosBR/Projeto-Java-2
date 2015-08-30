@@ -15,8 +15,8 @@ import índices.TipoVeículo;
 public class NovoVeículo {
 	private static String chassi;
 	private static float preço;
-	private int cilindrada; 
-	private int capacidadeDoTanque;
+	private static int cilindrada; 
+	private static int capacidadeDoTanque;
 	static int opção;
 	private static Scanner lêOpção = new Scanner(System.in);
 	public static HashMap<String, Enum> mapa;
@@ -34,8 +34,8 @@ public class NovoVeículo {
 				mapa.put("Câmbio", defineCâmbio());
 			}
 				else {
-					/*Veículo.setCilindrada(defineCilindrada()) ;
-					capacidadeDoTanque = defineCapacidadeDoTanque();*/
+					cilindrada = defineCilindrada();
+					capacidadeDoTanque = defineCapacidadeDoTanque();
 				}
 		mapa.put("Cor", defineCor());
 		veiculo.setMapa(mapa);
@@ -284,7 +284,7 @@ public class NovoVeículo {
 		return câmbio;
 	}
 	
-	private int defineCilindrada() {
+	private static int defineCilindrada() {
 		boolean confirmacao=false;
 		while(!confirmacao){
 			System.out.println();
@@ -296,7 +296,7 @@ public class NovoVeículo {
 				System.out.println("Somente números são permitidos neste campo. \n");
 				lêOpção.nextLine();//Limpa a entrada
 				
-				this.defineCilindrada();//faz uma nova chada para o mesmo metodo da classe
+				defineCilindrada();//faz uma nova chada para o mesmo metodo da classe
 			}
 			if(cilindrada>0) confirmacao=true;
 			
@@ -305,7 +305,7 @@ public class NovoVeículo {
 		
 	}
 	
-	private int defineCapacidadeDoTanque() {
+	private static int defineCapacidadeDoTanque() {
 		boolean confirmacao=false;
 		while(!confirmacao){
 			System.out.println();
@@ -316,7 +316,7 @@ public class NovoVeículo {
 				System.out.println("Somente números são permitidos neste campo. \n");
 				lêOpção.nextLine();//Limpa a entrada
 				
-				this.defineCapacidadeDoTanque();//faz uma nova chada para o mesmo metodo da classe
+				defineCapacidadeDoTanque();//faz uma nova chada para o mesmo metodo da classe
 			}
 			if(capacidadeDoTanque<0) {
 				confirmacao=false;

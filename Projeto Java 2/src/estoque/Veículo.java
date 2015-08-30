@@ -13,8 +13,6 @@ public class Veículo {
 	private int cilindrada; 
 	private int capacidadeDoTanque;
 	public HashMap<String, Enum> mapa;
-	private static Scanner lêOpção = new Scanner(System.in);
-	int opção;
 	public Veículo(int empty){
 		
 	}
@@ -112,6 +110,8 @@ public String getModelo(){
 		String cor = mapa.get("Cor").toString();
 		return cor;
 	}
+	
+	
 public String getTipoVeiculo(){
 		
 		String tipoVeiculo = mapa.get("TipoVeículo").toString();
