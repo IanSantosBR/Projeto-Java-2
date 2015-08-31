@@ -20,6 +20,7 @@ public class Veículo {
 	
 	@Override
 	public String toString() {
+		System.out.println(this.mapa.containsValue(TipoVeículo.MOTO));
 		if (mapa.containsValue(TipoVeículo.CARRO)){
 			return " \n" + "==========================================================" + "\n" + "\t\t\t" +
 				   " CARRO " + "\n" +

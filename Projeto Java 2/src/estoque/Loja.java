@@ -3,15 +3,18 @@ package estoque;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.InputMismatchException;
 
 import IO.InputLoad;
 import IO.OutputSave;
 import principal.Menu;
+import índices.TipoVeículo;
 
 public class Loja {
 	private String nome;
 	private String endereço;
 	private static ArrayList <Veículo> estoque = new ArrayList <Veículo>();
+	private static Veículo veículo;
 	public Loja(){
 		Veículo veiculoCarregado=new Veículo(0);
 		InputLoad loadSavedFiles=new InputLoad();
@@ -98,13 +101,22 @@ public class Loja {
 		}	
 	}
 
-	/*public static Veículo buscarChassi(String chassi){ 		//Ao executar e depois pedir pra fechar o programa, ele abre o main.
-		Veículo veículo = null;
+	public static Veículo buscarChassi(String chassi, int option){ 		//Ao executar e depois pedir pra fechar o programa, ele abre o main.
+		
+		veículo = null;
 		boolean achou = false;
 		for (Veículo ve: estoque){
-			if (ve.getChassi().equals(chassi)){
+			System.out.println(ve.mapa.containsValue(TipoVeículo.CARRO));
+			if (ve.getChassi().equals(chassi) && option==1 && ve.mapa.containsValue(TipoVeículo.CARRO)){
+				System.out.println(option);
 				veículo = ve;
 				achou = true;
+				return veículo;
+			}
+			else if (ve.getChassi().equals(chassi) && option==2 && ve.mapa.containsValue(TipoVeículo.MOTO)){
+				veículo = ve;
+				achou = true;
+				return veículo;
 			}
 		}
 		if (!achou){
@@ -128,7 +140,7 @@ public class Loja {
 			}
 		}
 		return veículos;
-	}*/
+	}
 	
 	public String getEndereço() {
 		return endereço;

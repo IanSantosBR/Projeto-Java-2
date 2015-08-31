@@ -1,10 +1,15 @@
 package principal;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 //import java.util.ArrayList;
 
+
+
+
 import estoque.Loja;
+import estoque.Veículo;
 //import estoque.Veículo;
 
 public class Menu {
@@ -76,22 +81,37 @@ public class Menu {
 			main(args);
 			break;
 			
-		/*case 3:
+		case 3:
 			System.out.println();
 			System.out.println("\t ---------------------------------- ");
 			System.out.println("\t LOJA DE VEÍCULOS - BUSCAR CHASSI ");
 			System.out.println("\t ---------------------------------- \n");
-			System.out.print("Digite o chassi para buscar: ");
-			chassi = lêOpção.next();
-			Veículo veículo = Loja.buscarChassi(chassi);
-			try {
+			System.out.println("1 - Buscar Carro  \n" + 
+			       	   "2 - Buscar Moto    \n"+ 
+			           "---------------------    ");
+			System.out.print("Escolha uma opção: ");
+			int option = lêOpção.nextInt();
+			if(option<3 && option>0){
+				System.out.print("Digite o número do chassi: ");
+				chassi= lêOpção.next();
+				Veículo veículo = Loja.buscarChassi(chassi,option);
+				try{
+				System.out.printf(veículo.toString());
+				} catch(Exception e){
+					main(args);
+				}
+			}
+			else{
+				System.out.printf("ERRO OPÇÃO INVALIDA");
+			}
+			/*try {
 				System.out.println(veículo.toString());
 				Thread.sleep(1500);
 			} catch (NullPointerException ex){
 				main(args);
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
-			  }
+			  }*/
 			main(args);
 			break;
 			
@@ -109,7 +129,7 @@ public class Menu {
 				System.out.println(ve.toString());
 				}
 			}
-			break;*/
+			break;
 			
 		case 5:
 			System.out.println("\t ----------------------------- ");
