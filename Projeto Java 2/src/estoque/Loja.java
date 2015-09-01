@@ -1,25 +1,32 @@
 package estoque;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
+import arquivo.Salva;
 import principal.Menu;
 
 public class Loja {
-	private String nome;
+	public String nome;
 	private String endereço;
-	private static ArrayList <Veículo> estoque = new ArrayList <Veículo>();
+	public static ArrayList <Veículo> estoque = new ArrayList <Veículo>();
 	
 	public Loja(String nome, String endereço) {
-		nome = "Loja de Veículos";
+		this.nome = "Loja de Veículos";
 		this.endereço = endereço;
 	}
 	
 	public static void adicionar() {
 		Veículo veículo = new Veículo();
 		estoque.add(veículo);
+		try {
+           Salva.gravar(veículo);
+        } catch (IOException e) {
+            System.err.println("Ocorreu um problema na gravação do arquivo.");
+        }
 		System.out.println();
-		System.out.println("Veículo cadastrado com sucesso. \n");
+		System.out.println("O veículo foi cadastrado. \n");
 		try {
 			Thread.sleep(1500);
 		} catch (InterruptedException ex) {
@@ -29,19 +36,18 @@ public class Loja {
 
 	public static void remover(String chassi) {
 		boolean apagou = false;
-
 		try {
 			for (Veículo ve: estoque){
 				if (ve.getChassi().equals(chassi)){
 					estoque.remove(ve);
 					apagou = true;
 					System.out.println();
-					System.out.println("Veículo removido com sucesso. \n");
+					System.out.println("O veículo foi removido. \n");
 					Thread.sleep(1500);
 				}
 			}
 			if (!apagou){
-				System.out.println("Não existe veículo cadastrado com esse chassi. \n");
+				System.err.println("\nNão existe veículo cadastrado com esse chassi. \n");
 			}
 		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
@@ -52,25 +58,15 @@ public class Loja {
 	
 	public static void listar() {
 		StringBuilder veículo = new StringBuilder();
-		if (estoque.isEmpty()){
-			System.out.println("Não existem veículos cadastrados. \n");
-			try {
-				Thread.sleep(1500);
-			} catch (InterruptedException ex) {
-				Thread.currentThread().interrupt();
-			  }
+		for (Veículo ve: estoque){
+		    veículo.append(ve.toString());
 		}
-		else {
-			for (Veículo ve: estoque){
-				veículo.append(ve.toString());
-			}
 		System.out.println(veículo.toString());
 		try {
 			Thread.sleep(1500);
 		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
-		  }
-		}	
+		  }	
 	}
 
 	/*public static Veículo buscarChassi(String chassi){ 		//Ao executar e depois pedir pra fechar o programa, ele abre o main.

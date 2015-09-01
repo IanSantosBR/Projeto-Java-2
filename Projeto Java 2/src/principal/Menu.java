@@ -58,6 +58,11 @@ public class Menu {
 			System.out.print("Digite o chassi para remover: ");
 			chassi = lêOpção.next();
 			Loja.remover(chassi);
+			try {
+                Thread.sleep(2000);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+              }
 			main(args);
 			break;
 			
@@ -97,10 +102,21 @@ public class Menu {
 			break;*/
 			
 		case 5:
+		    System.out.println();
 			System.out.println("\t ----------------------------- ");
 			System.out.println("\t LOJA DE VEÍCULOS - LISTAR ");
 			System.out.println("\t ----------------------------- ");
-			Loja.listar();
+			if (Loja.estoque.isEmpty()){
+	            System.err.println("\nNão existem veículos cadastrados. \n");
+			}
+			else {
+			    Loja.listar();
+			}
+			try {
+                Thread.sleep(1500);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+              }
 			main(args);
 			break;
 			
@@ -118,7 +134,7 @@ public class Menu {
 			break;
 			
 		default:
-			System.err.println("A opção escolhida é inválida, tente novamente. \n");
+			System.err.println("A opção escolhida é inválida. \n");
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
