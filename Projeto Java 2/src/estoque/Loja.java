@@ -48,6 +48,10 @@ public class Loja {
 
     public static void remover(String chassi) {
         boolean apagou = false;
+        if (chassi.equals("0")){
+            System.err.println("\nO chassi digitado é inválido. \n");
+            return;
+        }
         try {
             for (Veículo ve : estoque) {
                 if (ve.getChassi().equals(chassi)) {
@@ -59,7 +63,7 @@ public class Loja {
                 }
             }
             if (!apagou) {
-                System.out.println("\nNão existe veículo cadastrado com esse chassi. Digite 0 caso esteja pesquisando. \n");
+                System.out.println("\nNão existe veículo cadastrado com esse chassi. \n");
             }
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();

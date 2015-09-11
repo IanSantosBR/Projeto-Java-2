@@ -18,9 +18,9 @@ public class Menu {
         lêOpção = new Scanner(System.in);
 
         SincronizaConsole.fixConsole();
-        System.out.println("\t ----------------");
-        System.out.println("\t LOJA DE VEÍCULOS");
-        System.out.println("\t ---------------- \n");
+        System.out.println("    ----------------");
+        System.out.println("    LOJA DE VEÍCULOS");
+        System.out.println("    ---------------- \n");
         System.out.println("1 - Adicionar veículo  \n" +
                            "2 - Remover veículo    \n" +
                            "3 - Buscar por chassi  \n" +
@@ -44,18 +44,18 @@ public class Menu {
         switch (opção) {
         case 1:
             System.out.println();
-            System.out.println("\t ----------------------------   ");
-            System.out.println("\t LOJA DE VEÍCULOS - ADICIONAR   ");
-            System.out.println("\t ---------------------------- \n");
+            System.out.println("    ----------------------------   ");
+            System.out.println("    LOJA DE VEÍCULOS - ADICIONAR   ");
+            System.out.println("    ---------------------------- \n");
             Loja.adicionar();
             main(args);
             break;
 
         case 2:
             System.out.println();
-            System.out.println("\t ---------------------------- ");
-            System.out.println("\t LOJA DE VEÍCULOS - REMOVER ");
-            System.out.println("\t ---------------------------- \n");
+            System.out.println("    ---------------------------- ");
+            System.out.println("    LOJA DE VEÍCULOS - REMOVER ");
+            System.out.println("    ---------------------------- \n");
             System.out.print("Digite o chassi para remover: ");
             chassi = lêOpção.next();
             Loja.remover(chassi);
@@ -69,9 +69,9 @@ public class Menu {
 
         case 3:
             System.out.println();
-            System.out.println("\t ---------------------------------- ");
-            System.out.println("\t LOJA DE VEÍCULOS - BUSCAR CHASSI ");
-            System.out.println("\t ---------------------------------- \n");
+            System.out.println("    ---------------------------------- ");
+            System.out.println("    LOJA DE VEÍCULOS - BUSCAR CHASSI ");
+            System.out.println("    ---------------------------------- \n");
             System.out.print("Digite o chassi para buscar: ");
             chassi = lêOpção.next();
             Veículo veículo = Loja.buscarChassi(chassi);
@@ -87,12 +87,12 @@ public class Menu {
             
          case 4:
             System.out.println();
-            System.out.println("\t ---------------------------- ");
-            System.out.println("\t LOJA DE VEÍCULOS - PESQUISAR ");
-            System.out.println("\t ---------------------------- \n");
+            System.out.println("    ---------------------------- ");
+            System.out.println("    LOJA DE VEÍCULOS - PESQUISAR ");
+            System.out.println("    ---------------------------- \n");
             Collection<Veículo> veículos = new HashSet<>(Loja.pesquisar());
             if (veículos.isEmpty()) {
-                System.out.println("\nNão existem veículos cadastrados com essas características. \n");
+                System.out.println("\nNão existem veículos cadastrados com essas características.");
             } else {
                 for (Veículo ve : veículos) {
                     System.out.print(ve.toString());
@@ -109,9 +109,9 @@ public class Menu {
             
         case 5:
             System.out.println();
-            System.out.println("\t ----------------------------- ");
-            System.out.println("\t LOJA DE VEÍCULOS - LISTAR ");
-            System.out.println("\t ----------------------------- ");
+            System.out.println("    ----------------------------- ");
+            System.out.println("    LOJA DE VEÍCULOS - LISTAR ");
+            System.out.println("    ----------------------------- ");
             if (Loja.estoque.isEmpty()) {
                 System.err.println("\nNão existem veículos cadastrados. \n");
             } else {

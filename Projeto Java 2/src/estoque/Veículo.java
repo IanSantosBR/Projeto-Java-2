@@ -257,7 +257,7 @@ public class Veículo {
                 }
             }
         while (cadastrado) {
-            System.err.println("\nJá existe um veículo cadastrado com esse chassi.");
+            System.err.println("\nJá existe um veículo cadastrado com esse chassi. \n*Digite 0 caso esteja pesquisando.");
             return defineChassi();
         }
         return chassi;
