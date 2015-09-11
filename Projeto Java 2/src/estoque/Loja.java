@@ -1,12 +1,14 @@
 package estoque;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.HashSet;
+//import java.util.InputMismatchException;
 
-import arquivo.Salva;
+//import arquivo.Salva;
 import principal.Menu;
+import estoque.Veículo;
 import ajustes.SincronizaConsole;
 
 public class Loja {
@@ -22,15 +24,14 @@ public class Loja {
 
     public static void adicionar() {
         boolean adicionou = true;
-        try {
+        //try {
             Veículo veículo = new Veículo();
             estoque.add(veículo);
-            Salva.gravar(veículo);
-        } catch (IOException ex) {
-            System.err.println("\nOcorreu um problema na gravação do arquivo. \n");
-            adicionou = false;
-
-        }
+            //Salva.gravar(veículo);
+        //} catch (IOException ex) {
+            //System.err.println("\nOcorreu um problema na gravação do arquivo. \n");
+            //adicionou = false;
+       // }
 
         if (adicionou) {
             System.out.println();
@@ -58,7 +59,7 @@ public class Loja {
                 }
             }
             if (!apagou) {
-                System.out.println("\nNão existe veículo cadastrado com esse chassi. \n");
+                System.out.println("\nNão existe veículo cadastrado com esse chassi. Digite 0 caso esteja pesquisando. \n");
             }
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
@@ -100,6 +101,18 @@ public class Loja {
             }
         }
         return veículo;
+    }
+    
+    public static Collection<Veículo> pesquisar() {
+        Collection<Veículo> veículos = new HashSet<Veículo>();
+        System.out.println("Digite 0 para pular alguma opção. \n");
+        Veículo veículo = new Veículo();
+        for (Veículo ve : estoque) {
+            if (ve.equals(veículo) == true) {
+                veículos.add(ve);
+            }
+        } 
+        return veículos;
     }
 
     public String getEndereço() {

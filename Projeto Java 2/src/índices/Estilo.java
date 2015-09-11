@@ -2,19 +2,15 @@ package índices;
 
 public enum Estilo {
 	
-	PERUA(0),
-	ESPORTIVO(1),
-	SEDÃ(2),
-	HATCHBACK(3),
-	TRAIL(4); 
+	PERUA(1), ESPORTIVO(2), SEDÃ(3), HATCHBACK(4), TRAIL(5); 
 	
 	private int opção;
-	
-	public int getOpção() {
-		return opção;
-	}
 
 	private Estilo(int opção) {
 		this.opção = opção;
-	}	
+	}
+	
+	public int getOpção() {
+        return opção;
+    }
 }

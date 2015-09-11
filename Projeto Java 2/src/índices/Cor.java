@@ -2,19 +2,15 @@ package índices;
 
 public enum Cor {
 	
-	PRETO(0),
-	BRANCO(1),
-	CINZA(2),
-	VERMELHO(3),
-	AMARELO(4);
+	PRETO(1), BRANCO(2), CINZA(3), VERMELHO(4), AMARELO(5);
 
 	private int opção;
-	
-	public int getOpção() {
-		return opção;
-	}
 
 	private Cor(int opção) {
 		this.opção = opção;
 	}
+	
+	public int getOpção() {
+        return opção;
+    }
 }

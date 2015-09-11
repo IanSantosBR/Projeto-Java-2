@@ -2,18 +2,18 @@ package principal;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Collection;
+import java.util.HashSet;
 
 import estoque.Loja;
 import estoque.Veículo;
 import ajustes.SincronizaConsole;
 
 public class Menu {
-
     private static Scanner lêOpção;
     static String chassi = null;
 
     public static void main(String[] args) {
-
         int opção = 236541789;
         lêOpção = new Scanner(System.in);
 
@@ -79,6 +79,28 @@ public class Menu {
                 System.out.println(veículo.toString());
                 Thread.sleep(1500);
             } catch (NullPointerException ex) {
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+            main(args);
+            break;
+            
+         case 4:
+            System.out.println();
+            System.out.println("\t ---------------------------- ");
+            System.out.println("\t LOJA DE VEÍCULOS - PESQUISAR ");
+            System.out.println("\t ---------------------------- \n");
+            Collection<Veículo> veículos = new HashSet<>(Loja.pesquisar());
+            if (veículos.isEmpty()) {
+                System.out.println("\nNão existem veículos cadastrados com essas características. \n");
+            } else {
+                for (Veículo ve : veículos) {
+                    System.out.print(ve.toString());
+                }
+            }
+            System.out.println();
+            try {
+                Thread.sleep(2500);
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }

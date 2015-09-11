@@ -26,10 +26,15 @@ public class Veículo {
         if (mapa.containsValue(TipoVeículo.CARRO)) {
             mapa.put("Motorização", defineMotorização());
             mapa.put("Câmbio", defineCâmbio());
-        } else {
+        } else if (mapa.containsValue(TipoVeículo.MOTO)) {
             cilindrada = defineCilindrada();
             capacidadeDoTanque = defineCapacidadeDoTanque();
-        }
+            } else {
+                mapa.put("Motorização", defineMotorização());
+                mapa.put("Câmbio", defineCâmbio());
+                cilindrada = defineCilindrada();
+                capacidadeDoTanque = defineCapacidadeDoTanque();
+            }
         mapa.put("Cor", defineCor());
         chassi = defineChassi();
         preço = definePreço();
@@ -38,30 +43,30 @@ public class Veículo {
     private TipoVeículo defineTipoVeículo() {
         TipoVeículo veículo = null;
         boolean existe = false;
-        int cont = 0;
+        int aux = 0;
         int opção = -1;
-        System.out.println("1 - Carro  			       \n" + 
-                           "2 - Moto   			       \n" + 
+        System.out.println("1 - Carro  		       \n" + 
+                           "2 - Moto   		       \n" + 
                            "-----------------------------");
         System.out.print("Escolha o tipo do veículo: ");
         try {
             opção = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo. \n");
-            cont = 1;
+            aux = 1;
         }
         if (opção == 0){
             return veículo;
         }
             else {
                 for (TipoVeículo tv : TipoVeículo.values()) {
-                    if (tv.getOpção() == (opção - 1)) {
+                    if (tv.getOpção() == opção) {
                         veículo = tv;
                         existe = true;
                     }
                 }
             }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineTipoVeículo();
         } else if (!existe) {
@@ -75,34 +80,34 @@ public class Veículo {
     private Fabricante defineFabricante() {
         Fabricante fabricante = null;
         boolean existe = false;
-        int cont = 0;
+        int aux = 0;
         int opção = -1;
         System.out.println();
-        System.out.println("1 - Volkswagen             \n" + 
-                           "2 - Honda    			   \n" + 
-                           "3 - Ford    			   \n" +
-                           "4 - Toyota    			   \n" + 
-                           "5 - Hyundai    			   \n" +
+        System.out.println("1 - Volkswagen         \n" + 
+                           "2 - Honda    	       \n" + 
+                           "3 - Ford    	       \n" +
+                           "4 - Toyota    	       \n" + 
+                           "5 - Hyundai    	       \n" +
                            "-----------------------------");
         System.out.print("Escolha o fabricante: ");
         try {
             opção = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (opção == 0){
             return fabricante;
         }
             else {
                 for (Fabricante fa : Fabricante.values()) {
-                    if (fa.getOpção() == (opção - 1)) {
+                    if (fa.getOpção() == opção) {
                         fabricante = fa;
                         existe = true;
                     }
                 }
             }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineFabricante();
         } else if (!existe) {
@@ -116,34 +121,34 @@ public class Veículo {
     private Modelo defineModelo() {
         Modelo modelo = null;
         boolean existe = false;
-        int cont = 0;
+        int aux = 0;
         int opção = -1;
         System.out.println();
-        System.out.println("1 - Golf                   \n" +
-                           "2 - HR-V    			   \n" + 
-                           "3 - Focus    			   \n" +
-                           "4 - Corolla    			   \n" + 
-                           "5 - HB20    			   \n" +
+        System.out.println("1 - Golf               \n" +
+                           "2 - HR-V    	       \n" + 
+                           "3 - Focus    	       \n" +
+                           "4 - Corolla    	       \n" + 
+                           "5 - HB20    	       \n" +
                            "-----------------------------");
         System.out.print("Escolha o modelo: ");
         try {
             opção = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (opção == 0){
             return modelo;
         }
             else {
                 for (Modelo mo : Modelo.values()) {
-                    if (mo.getOpção() == (opção - 1)) {
+                    if (mo.getOpção() == opção) {
                         modelo = mo;
                         existe = true;
                     }
                 }
             }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineModelo();
         } else if (!existe) {
@@ -157,13 +162,13 @@ public class Veículo {
     private Estilo defineEstilo() {
         Estilo estilo = null;
         boolean existe = false;
-        int cont = 0;
+        int aux = 0;
         int opção = -1;
         System.out.println();
-        System.out.println("1 - Perua  		   		   \n" +
-                           "2 - Esportivo    		   \n" +
+        System.out.println("1 - Perua  		           \n" +
+                           "2 - Esportivo              \n" +
                            "3 - Sedã                   \n" +
-                           "4 - Hatchback   		   \n" +
+                           "4 - Hatchback   	       \n" +
                            "5 - Trail                  \n" + 
                            "-----------------------------");
         System.out.print("Escolha o estilo: ");
@@ -171,20 +176,20 @@ public class Veículo {
             opção = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (opção == 0){
             return estilo;
         }
             else {
                 for (Estilo es : Estilo.values()) {
-                    if (es.getOpção() == (opção - 1)) {
+                    if (es.getOpção() == opção) {
                         estilo = es;
                         existe = true;
                     }
                 }
             }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineEstilo();
         } else if (!existe) {
@@ -198,34 +203,34 @@ public class Veículo {
     private Cor defineCor() {
         Cor cor = null;
         boolean existe = false;
-        int cont = 0;
+        int aux = 0;
         int opção = -1;
         System.out.println();
-        System.out.println("1 - Preto  		   		   \n" +
-                           "2 - Branco    			   \n" +
-                           "3 - Cinza    			   \n" +
-                           "4 - Vermelho               \n" +
-                           "5 - Amarelo    			   \n" +
+        System.out.println("1 - Preto  		       \n" +
+                           "2 - Branco    	       \n" +
+                           "3 - Cinza    	       \n" +
+                           "4 - Vermelho           \n" +
+                           "5 - Amarelo    	       \n" +
                            "-----------------------------");
         System.out.print("Escolha a cor: ");
         try {
             opção = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (opção == 0){
             return cor;
         }
             else {
                 for (Cor co : Cor.values()) {
-                    if (co.getOpção() == (opção - 1)) {
+                    if (co.getOpção() == opção) {
                         cor = co;
                         existe = true;
                     }
                 }
             }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineCor();
         } else if (!existe) {
@@ -242,7 +247,7 @@ public class Veículo {
         System.out.print("Digite o número do chassi: ");
         chassi = lêOpção.next();
         if (chassi.equals("0")) {
-            return chassi;
+            return null;
         }
             else {
                 for (Veículo ve : Loja.estoque) {
@@ -259,7 +264,7 @@ public class Veículo {
     }
 
     private float definePreço() {
-        int cont = 0;
+        int aux = 0;
         preço = -1;
         System.out.println();
         System.out.print("Digite o preço: ");
@@ -267,12 +272,12 @@ public class Veículo {
             preço = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (preço == 0){
-            return preço;
+            return 0;
         }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return definePreço();
         }
@@ -283,11 +288,11 @@ public class Veículo {
         }
         return preço;
     }
-
+    
     private Motorização defineMotorização() {
         Motorização motorização = null;
         boolean existe = false;
-        int cont = 0;
+        int aux = 0;
         int opção = -1;
         System.out.println();
         System.out.println("1 - 1.0                    \n" +
@@ -303,20 +308,20 @@ public class Veículo {
             opção = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (opção == 0){
             return motorização;
         }
             else {
                 for (Motorização mo : Motorização.values()) {
-                    if (mo.getOpção() == (opção - 1)) {
+                    if (mo.getOpção() == opção) {
                         motorização = mo;
                         existe = true;
                     }
                 }
             }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineMotorização();
         } else if (!existe) {
@@ -330,7 +335,7 @@ public class Veículo {
     private Câmbio defineCâmbio() {
         Câmbio câmbio = null;
         boolean existe = false;
-        int cont = 0;
+        int aux = 0;
         int opção = -1;
         System.out.println();
         System.out.println("1 - Automático          \n" +
@@ -342,20 +347,20 @@ public class Veículo {
             opção = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (opção == 0){
             return câmbio;
         }
             else {
                 for (Câmbio câ : Câmbio.values()) {
-                    if (câ.getOpção() == (opção - 1)) {
+                    if (câ.getOpção() == opção) {
                         câmbio = câ;
                         existe = true;
                     }
                 }
             }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineCâmbio();
         } else if (!existe) {
@@ -367,7 +372,7 @@ public class Veículo {
     }
 
     private int defineCilindrada() {
-        int cont = 0;
+        int aux = 0;
         cilindrada = -1;
         System.out.println();
         System.out.print("Digite a cilindrada: ");
@@ -375,12 +380,12 @@ public class Veículo {
             cilindrada = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (cilindrada == 0){
-            return cilindrada;
+            return 0;
         }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineCilindrada();
         }
@@ -393,7 +398,7 @@ public class Veículo {
     }
 
     private int defineCapacidadeDoTanque() {
-        int cont = 0;
+        int aux = 0;
         capacidadeDoTanque = -1;
         System.out.println();
         System.out.print("Digite a capacidade do tanque: ");
@@ -401,12 +406,12 @@ public class Veículo {
             capacidadeDoTanque = lêOpção.nextInt();
         } catch (InputMismatchException ex) {
             System.err.println("\nSomente números são permitidos neste campo.");
-            cont = 1;
+            aux = 1;
         }
         if (capacidadeDoTanque == 0){
-            return capacidadeDoTanque;
+            return 0;
         }
-        if (cont == 1) {
+        if (aux == 1) {
             lêOpção.nextLine();
             return defineCapacidadeDoTanque();
         }
@@ -438,7 +443,66 @@ public class Veículo {
         }
     }
 
-    public String getChassi() {
+    /*@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + capacidadeDoTanque;
+		result = prime * result + ((chassi == null) ? 0 : chassi.hashCode());
+		result = prime * result + cilindrada;
+		result = prime * result + ((mapa == null) ? 0 : mapa.hashCode());
+		result = prime * result + Float.floatToIntBits(preço);
+		return result;
+	}*/
+
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Veículo other = (Veículo) obj;
+        if (this.mapa.get("TipoVeículo") != (other.mapa.get("TipoVeículo")) && (other.mapa.get("TipoVeículo")) != null){
+            return false; 
+        } 
+        if (this.mapa.get("Fabricante") != (other.mapa.get("Fabricante")) && (other.mapa.get("Fabricante")) != null){
+            return false;
+        }
+        if (this.mapa.get("Modelo") != (other.mapa.get("Modelo")) && (other.mapa.get("Modelo")) != null){
+            return false;
+        }
+        if (this.mapa.get("Estilo") != (other.mapa.get("Estilo")) && (other.mapa.get("Modelo")) != null){
+            return false;
+        }
+        
+       //if (!this.mapa.get("Motorização").equals(other.mapa.get("Motorização")) && (other.mapa.get("Motorização")) != null){
+            //return false;
+        //}     ERRO PQ RETORNA STRING
+        
+        if (this.mapa.get("Câmbio") != (other.mapa.get("Câmbio")) && (other.mapa.get("Câmbio")) != null){
+            return false;
+        }
+        if ((this.cilindrada != other.cilindrada) && (other.cilindrada) != 0) {
+            return false;
+        }
+        if ((this.capacidadeDoTanque != other.capacidadeDoTanque) && (other.capacidadeDoTanque)!= 0) {
+            return false;
+        }
+        if (this.mapa.get("Cor") != (other.mapa.get("Cor")) && (other.mapa.get("Cor")) != null){
+            return false;
+        }
+        if ((this.preço != other.preço) && other.preço != 0){
+        	return false;
+        }
+       return true;
+    }
+	
+	public String getChassi() {
         return chassi;
     }
     
