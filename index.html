@@ -1,188 +1,150 @@
 ﻿<!DOCTYPE html>
-<html><head>
-    <meta charset="utf-8">
-    <title>Loja de Veículos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="ícone.png">
-    <style type="text/css">
-        html,
-        body {
-            width: 100%;
-            min-width: 320px;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background: #333;
-        }
+<html>
+<head>
+<meta charset="utf-8">
+<title>Loja de Veículos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="ícone.png">
+<style type="text/css">
+html,  body {
+	width: 100%;
+	min-width: 320px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #333;
+}
+body {
+	display: table;
+	min-height: 600px;
+	font-family: 'Segoe UI Light', 'HelveticaNeue-Light', 'Helvetica Neue Light', Tahoma, Verdana, Arial, sans-serif;
+}
+#navbar {
+	width: 100%;
+	min-width: 320px;
+	overflow: hidden;
+	height: 50px;
+	background-color: rgba(40, 40, 40, 0.97);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+#navbar .name,  #navbar .link {
+	margin: 0 15px;
+	line-height: 50px;
+	font-family: 'Segoe UI', 'Helvetica', Tahoma, Verdana, Arial, sans-serif;
+	font-size: 16px;
+	display: inline-block;
+}
+#navbar .name {
+	color: #eee;
+}
+#navbar .link a,  #navbar .link a:link,  #navbar .link a:visited {
+	color: #aaa;
+	text-decoration: none;
+	display: inline-block;
+}
+#navbar .link a:hover {
+	color: #eee;
+	border-color: #eee;
+}
+#navbar .link a:active {
+	color: #666;
+}
+#splash {
+	padding: 20px;
+	margin-top: 80px;
+}
+#logo {
+	width: 250px;
+	height: 108px;
+	margin: 0 auto;
+}
+#title,  #description {
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+#title {
+	font-size: 64px;
+	color: #eee;
+	margin-bottom: 10px;
+}
+#description {
+	font-size: 24px;
+	color: #aaa;
+}
+#description a,  #description a:link,  #description a:visited {
+	color: #eee;
+	text-decoration: none;
+}
+#description a:hover {
+	color: #eee;
+	border-bottom: 1px solid #eee;
+}
+#description a:active {
+	color: #aaa;
+	border-color: #aaa;
+}
+#buttons,  #citations {
+	margin-top: 50px;
+	text-align: center;
+}
+#buttons a {
+	display: inline-block;
+	padding: 10px 15px;
+	margin: 10px;
+}
+#buttons a,  #buttons a:link,  #buttons a:visited {
+	font-size: 20px;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #aaa;
+	text-decoration: none;
+}
+#buttons a:hover {
+	color: #eee;
+}
+#buttons a:active {
+	color: #666;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+#citations {
+	color: #555;
+	font-family: 'Segoe UI', 'Helvetica', Tahoma, Verdana, Arial, sans-serif;
+	font-size: 12px;
+}
+#citations a {
+	color: #555;
+}
 
-        body {
-            display: table;
-            min-height: 600px;
-            font-family: 'Segoe UI Light', 'HelveticaNeue-Light', 'Helvetica Neue Light', Tahoma, Verdana, Arial, sans-serif;
-        }
-
-        #navbar {
-            width: 100%;
-            min-width: 320px;
-            overflow: hidden;
-            height: 50px;
-            background-color: rgba(40, 40, 40, 0.97);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        #navbar .name,
-        #navbar .link {
-            margin: 0 15px;
-            line-height: 50px;
-            font-family: 'Segoe UI', 'Helvetica', Tahoma, Verdana, Arial, sans-serif;
-            font-size: 16px;
-            display: inline-block;
-        }
-
-        #navbar .name {
-            color: #eee;
-        }
-
-        #navbar .link a,
-        #navbar .link a:link,
-        #navbar .link a:visited {
-            color: #aaa;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        #navbar .link a:hover {
-            color: #eee;
-            border-color: #eee;
-        }
-
-        #navbar .link a:active {
-            color: #666;
-        }
-
-        #splash {
-            padding: 20px;  
-            margin-top: 80px;
-        }
-
-        #logo {
-            width: 250px;
-            height: 108px;
-            margin: 0 auto;
-        }
-		
-        #title,
-        #description {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        #title {
-            font-size: 64px;
-            color: #eee;
-            margin-bottom: 10px;
-        }
-
-        #description {
-            font-size: 24px;
-            color: #aaa;
-        }
-
-        #description a,
-        #description a:link,
-        #description a:visited {
-            color: #eee;
-            text-decoration: none;
-        }
-
-        #description a:hover {
-            color: #eee;
-            border-bottom: 1px solid #eee;
-        }
-
-        #description a:active {
-            color: #aaa;
-            border-color: #aaa;
-        }
-
-        #buttons,
-        #citations {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        #buttons a {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 10px;
-        }
-
-        #buttons a,
-        #buttons a:link,
-        #buttons a:visited {
-            font-size: 20px;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: #aaa;
-            text-decoration: none;
-        }
-
-        #buttons a:hover {
-            color: #eee;
-        }
-
-        #buttons a:active {
-            color: #666;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        #citations {
-            color: #555;
-            font-family: 'Segoe UI', 'Helvetica', Tahoma, Verdana, Arial, sans-serif;
-            font-size: 12px;
-        }
-
-        #citations a {
-            color: #555;
-        }
-
-        @media screen and (max-width: 570px) {
-            #logo {
-                width: 150px;
-                height: 153px;
-            }
-            
-            #title {
-                font-size: 32px;
-            }
-
-            #description,
-            #splash #buttons a {
-                font-size: 16px;
-                font-family: 'Segoe UI', 'Helvetica', Tahoma, Verdana, Arial, sans-serif;
-            }
-        }
-    </style>
-<style type="text/css"></style></head>
+@media screen and (max-width: 570px) {
+#logo {
+	width: 150px;
+	height: 153px;
+}
+#title {
+	font-size: 32px;
+}
+#description,  #splash #buttons a {
+	font-size: 16px;
+	font-family: 'Segoe UI', 'Helvetica', Tahoma, Verdana, Arial, sans-serif;
+}
+</style>
+<style type="text/css">
+</style>
+</head>
 <body>
-    <div id="navbar">
-        <div class="name">
-            <span>Loja de Veículos</span>
-        </div>
-        <div class="link"><a href="https://github.com/IanSantosBR/Projeto-Java-2">GitHub</a></div>
-    </div>
+<div id="navbar">
+  <div class="name"> <span>Loja de Veículos</span> </div>
+  <div class="link"><a href="https://github.com/IanSantosBR/Projeto-Java-2/releases/tag/v0.9.1-beta">GitHub</a></div>
+</div>
 <div id="splash">
-        <div id="logo">
-        	<img src="ícone.png">
-        </div>
-        <div id="title">Loja de Veículos</div>
-        <div id="description">Uma simples aplicação em Java que simula uma loja de veículos.</div>
-        <div id="buttons">
-            <a href="https://github.com/IanSantosBR/Projeto-Java-2">Ver no GitHub</a>
-        </div>
-        <div id="citations">Copyright © 2015 <a href="https://github.com/IanSantosBR">@IanSantosBR</a>&nbsp; <a href="https://github.com/marcioperdigao">@marcioperdigao</a>.&nbsp;Todos os direitos reservados.</div>
-    </div>
-</body></html>
+  <div id="logo"> <img src="ícone.png"> </div>
+  <div id="title">Loja de Veículos</div>
+  <div id="description">Uma simples aplicação em Java que simula uma loja de veículos.</div>
+  <div id="buttons"> <a href="https://github.com/IanSantosBR/Projeto-Java-2/releases/tag/v0.9.1-beta">Ver no GitHub</a> </div>
+  <div id="citations">Copyright © 2015 <a href="https://github.com/IanSantosBR">@IanSantosBR</a>&nbsp; <a href="https://github.com/marcioperdigao">@marcioperdigao</a>.&nbsp;Todos os direitos reservados.</div>
+</div>
+</body>
+</html>
